@@ -9,11 +9,13 @@
 <link rel="canonical" href="https://vadex-web.github.io/vadex-card/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<div class="prog" id="prog" aria-hidden="true"></div>
 <header class="top">
   <a class="logo" href="#top">vadex<span>_</span></a>
   <nav>
@@ -26,13 +28,22 @@
 <main id="top">
   <section class="hero">
     <p class="prompt">$ whoami</p>
-    <h1><span id="typed"></span><i class="caret"></i></h1>
+    <h1 class="name" id="name" aria-label="Vadex">VADEX</h1>
+    <p class="role"><span id="typed"></span><i class="caret"></i></p>
     <p class="lead">Студент и веб-разработчик. Делаю быстрые сайты для малого бизнеса — от лендинга до админки.</p>
     <div class="cta">
       <a class="btn" href="#work">смотреть работы</a>
-      <a class="btn ghost" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">telegram</a>
+      <a class="btn ghost" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">написать в telegram</a>
     </div>
+    <dl class="stats">
+      <div><dt id="s1">0</dt><dd>проектов</dd></div>
+      <div><dt id="s2">0</dt><dd>с открытым кодом</dd></div>
+      <div><dt id="s3">0</dt><dd>сайтов на заказ</dd></div>
+      <div><dt id="s4">0</dt><dd>языков в стеке</dd></div>
+    </dl>
+    <a class="scroll" href="#about" aria-label="Вниз"><span></span></a>
   </section>
+  <div class="belt" aria-hidden="true"><div class="belt-in" id="belt"></div></div>
 
   <section id="about" class="block">
     <h2><b>01</b> about</h2>
@@ -42,7 +53,7 @@
 role:    web developer
 status:  студент
 focus:   сайты для малого бизнеса
-works:   17 проектов, у каждого живое демо
+works:   <span class="cw">0</span> проектов, у каждого живое демо
 stack:   Python · JS/TS · React · Django</pre>
     </div>
   </section>
@@ -65,6 +76,11 @@ stack:   Python · JS/TS · React · Django</pre>
 
   <section id="work" class="block">
     <h2><b>03</b> work</h2>
+    <div class="filter" id="filter" role="group" aria-label="Фильтр работ">
+      <button type="button" class="on" data-f="all">все</button>
+      <button type="button" data-f="order">на заказ</button>
+      <button type="button" data-f="code">с открытым кодом</button>
+    </div>
     <div class="grid" id="grid"></div>
   </section>
 
