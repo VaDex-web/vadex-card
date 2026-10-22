@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vadex — веб-разработчик</title>
-<meta name="description" content="Vadex — студент и веб-разработчик. Быстрые сайты для малого бизнеса: от лендинга до админки. Портфолио с живыми демо.">
+<title>Vadex — сайты, приложения, Telegram-боты</title>
+<meta name="description" content="Vadex — разработчик: сайты, мобильные приложения на Flutter и Kotlin, Telegram-боты на Python. Портфолио с живыми демо.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://vadex-web.github.io/vadex-card/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,16 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="boot" id="boot" aria-hidden="true"><pre id="bootlog"></pre></div>
 <canvas id="bg" aria-hidden="true"></canvas>
 <div class="glow" id="glow" aria-hidden="true"></div>
+<div class="ring" id="ring" aria-hidden="true"></div>
 <div class="prog" id="prog" aria-hidden="true"></div>
 <header class="top">
   <a class="logo" href="#top">vadex<span>_</span></a>
   <nav>
     <a href="#about">about</a>
+    <a href="#services">services</a>
     <a href="#stack">stack</a>
     <a href="#work">work</a>
     <a href="#contact">contact</a>
@@ -27,13 +30,20 @@
 </header>
 <main id="top">
   <section class="hero">
+    <div class="orbwrap" aria-hidden="true">
+      <svg class="badge" viewBox="0 0 200 200">
+        <defs><path id="circ" d="M100,100 m-92,0 a92,92 0 1,1 184,0 a92,92 0 1,1 -184,0"/></defs>
+        <text><textPath href="#circ" startOffset="0" textLength="576" lengthAdjust="spacing">WEB · MOBILE · TELEGRAM BOTS · VADEX · WEB · MOBILE · TELEGRAM BOTS · </textPath></text>
+      </svg>
+      <canvas id="orb"></canvas>
+    </div>
     <p class="prompt">$ whoami</p>
     <h1 class="name" id="name" aria-label="Vadex">VADEX</h1>
     <p class="role"><span id="typed"></span><i class="caret"></i></p>
-    <p class="lead">Студент и веб-разработчик. Делаю быстрые сайты для малого бизнеса — от лендинга до админки.</p>
+    <p class="lead">Студент и разработчик. Делаю сайты для малого бизнеса, мобильные приложения на Flutter и Kotlin и Telegram-ботов на Python.</p>
     <div class="cta">
-      <a class="btn" href="#work">смотреть работы</a>
-      <a class="btn ghost" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">написать в telegram</a>
+      <a class="btn mag" href="#work">смотреть работы</a>
+      <a class="btn ghost mag" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">написать в telegram</a>
     </div>
     <dl class="stats">
       <div><dt id="s1">0</dt><dd>проектов</dd></div>
@@ -44,38 +54,66 @@
     <a class="scroll" href="#about" aria-label="Вниз"><span></span></a>
   </section>
   <div class="belt" aria-hidden="true"><div class="belt-in" id="belt"></div></div>
+  <div class="belt rev" aria-hidden="true"><div class="belt-in" id="belt2"></div></div>
 
   <section id="about" class="block">
-    <h2><b>01</b> about</h2>
+    <h2><b>01</b><span>about</span></h2>
     <div class="term">
       <div class="bar"><i></i><i></i><i></i><span>about.md</span></div>
-      <pre>name:    Vadex
-role:    web developer
+      <pre id="aboutpre">name:    Vadex
+role:    web · mobile · bots
 status:  студент
-focus:   сайты для малого бизнеса
+focus:   сайты, приложения, Telegram-боты
 works:   <span class="cw">0</span> проектов, у каждого живое демо
-stack:   Python · JS/TS · React · Django</pre>
+stack:   Python · JS/TS · Dart · Kotlin</pre>
+    </div>
+  </section>
+
+  <section id="services" class="block">
+    <h2><b>02</b><span>services</span></h2>
+    <div class="svc">
+      <article class="sv">
+        <div class="mock"><div class="br"><i class="sk h"></i><i class="sk l1"></i><i class="sk l2"></i><span class="cols"><i class="sk"></i><i class="sk"></i><i class="sk"></i></span><span class="ptr"></span></div></div>
+        <span class="sn">01 / web</span>
+        <h3>Сайты</h3>
+        <p>Лендинги, магазины с каталогом и фильтрами, админки — от макета до публикации.</p>
+        <ul class="mini"><li>HTML · CSS · JS</li><li>React</li><li>Django</li><li>PHP</li></ul>
+      </article>
+      <article class="sv">
+        <div class="mock"><div class="ph g"></div><div class="ph"><div class="feed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="nav"></span></div></div>
+        <span class="sn">02 / mobile</span>
+        <h3>Мобильные приложения</h3>
+        <p>Кроссплатформенные приложения на Flutter и нативная разработка под Android на Kotlin.</p>
+        <ul class="mini"><li>Flutter · Dart</li><li>Android · Kotlin</li></ul>
+      </article>
+      <article class="sv">
+        <div class="mock"><div class="chat"><i class="b1"></i><i class="b2 me"></i><i class="b3"></i><i class="b4 me"></i><span class="typing"><u></u><u></u><u></u></span></div></div>
+        <span class="sn">03 / bots</span>
+        <h3>Telegram-боты</h3>
+        <p>Боты на Python: заявки, уведомления, автоматизация рутины.</p>
+        <ul class="mini"><li>Python</li><li>aiogram</li></ul>
+      </article>
     </div>
   </section>
 
   <section id="stack" class="block">
-    <h2><b>02</b> stack</h2>
+    <h2><b>03</b><span>stack</span></h2>
     <p class="sg">языки</p>
     <ul class="tags">
-      <li>Python</li><li>JavaScript</li><li>TypeScript</li><li>PHP</li><li>HTML5</li><li>CSS3</li>
+      <li>Python</li><li>JavaScript</li><li>TypeScript</li><li>Dart</li><li>Kotlin</li><li>PHP</li><li>HTML5</li><li>CSS3</li>
     </ul>
     <p class="sg">фреймворки и инструменты</p>
     <ul class="tags">
-      <li>Django</li><li>React</li><li>Vite</li><li>Netlify</li><li>Git</li>
+      <li>Flutter</li><li>Android</li><li>aiogram</li><li>Django</li><li>React</li><li>Vite</li><li>Netlify</li><li>Git</li>
     </ul>
     <p class="sg">сейчас изучаю</p>
     <ul class="tags learn">
-      <li>Kotlin</li><li>Swift</li>
+      <li>Swift</li>
     </ul>
   </section>
 
   <section id="work" class="block">
-    <h2><b>03</b> work</h2>
+    <h2><b>04</b><span>work</span></h2>
     <div class="filter" id="filter" role="group" aria-label="Фильтр работ">
       <button type="button" class="on" data-f="all">все</button>
       <button type="button" data-f="order">на заказ</button>
@@ -85,14 +123,19 @@ stack:   Python · JS/TS · React · Django</pre>
   </section>
 
   <section id="contact" class="block">
-    <h2><b>04</b> contact</h2>
-    <p class="lead">Нужен сайт для вашего дела? Напишите мне в Telegram.</p>
+    <h2><b>05</b><span>contact</span></h2>
+    <p class="lead">Нужен сайт, приложение или бот? Напишите мне в Telegram.</p>
     <a class="big" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">@vv1rtuss <em>→</em></a>
+    <div class="cta">
+      <a class="btn mag" href="https://t.me/vv1rtuss" target="_blank" rel="noopener">открыть telegram</a>
+      <button class="btn ghost mag" id="copy" type="button">скопировать @vv1rtuss</button>
+    </div>
   </section>
 </main>
+<div class="mega" aria-hidden="true">VADEX</div>
 <footer>
   <span>© <span id="y"></span> Vadex</span>
-  <button id="fx" type="button" aria-pressed="true">частицы: вкл</button>
+  <span class="fr"><a href="#top" class="up">наверх ↑</a><button id="fx" type="button" aria-pressed="true">частицы: вкл</button></span>
 </footer>
 <script src="app.js"></script>
 </body>
