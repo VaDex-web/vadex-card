@@ -136,17 +136,31 @@ a.addEventListener("pointerleave",function(){a.style.setProperty("--rx","0deg");
 document.querySelectorAll(".card,.sv,.block,.term,.tags").forEach(function(x){x.classList.add("rv");io.observe(x);});
 
 
-var boot=$("#boot"),bl=$("#bootlog");
+var boot=$("#boot"),bl=$("#bootlog"),fin=false;
+function finishBoot(){
+if(fin)return;fin=true;
+if(!boot){document.body.classList.remove("pre");document.body.classList.add("go");return;}
+boot.classList.add("line");
+setTimeout(function(){
+boot.classList.add("open");
+document.body.classList.remove("pre");
+document.body.classList.add("go");
+if(typeof burst==="function"&&on){burst(w/2,h/2);burst(w/2,h/2);burst(w/2,h/2);}
+},560);
+setTimeout(function(){boot.classList.add("gone");},1800);
+}
 if(boot&&!reduce){
-var lines=["> init vadex.dev","> modules: web, mobile, bots","> loading "+total+" projects","> ready_"],bi=0,bc=0,txt="";
+document.body.classList.add("pre");
+var lines=["> init vadex.dev","> modules: web, mobile, bots","> loading "+total+" projects","> ready"],bi=0,bc=0,txt="";
 (function bt(){
-if(bi>=lines.length){setTimeout(function(){boot.classList.add("done");},260);return;}
+if(bi>=lines.length){setTimeout(finishBoot,300);return;}
 var L=lines[bi];
 bl.textContent=txt+L.slice(0,bc);
 if(bc<L.length){bc++;setTimeout(bt,16);}
 else{txt+=L+"\n";bi++;bc=0;setTimeout(bt,90);}
 })();
-boot.addEventListener("click",function(){boot.classList.add("done");});
+boot.addEventListener("click",finishBoot);
+setTimeout(finishBoot,3200);
 }else if(boot){boot.style.display="none";}
 
 var ring=$("#ring");
